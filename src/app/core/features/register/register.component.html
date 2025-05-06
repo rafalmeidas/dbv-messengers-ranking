@@ -1,0 +1,19 @@
+<h2>Register</h2>
+<form #registerForm="ngForm" (ngSubmit)="register()">
+  <input
+    type="email"
+    name="email"
+    placeholder="Email"
+    [(ngModel)]="email"
+    required
+  />
+  <input
+    type="password"
+    name="password"
+    placeholder="Password"
+    [(ngModel)]="password"
+    required
+  />
+  <button type="submit" [disabled]="registerForm.invalid">Register</button>
+</form>
+<button (click)="navigateToLogin()">Login</button>
