@@ -22,7 +22,7 @@ jobs:
           node-version: 18
 
       - name: Install dependencies
-        run: npm i
+        run: yarn install
 
       - name: Generate environment.prod.ts
         run: |
@@ -47,4 +47,4 @@ jobs:
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist/dbv-messengers-ranking
+          publish_dir: ./dist/dbv-messengers-ranking/browser
