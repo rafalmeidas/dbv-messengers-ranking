@@ -4,6 +4,8 @@ import { Router } from '@angular/router';
 import { Observable, of } from 'rxjs';
 import {
   signInWithEmailAndPassword,
+  GoogleAuthProvider,
+  signInWithPopup,
   signOut,
   Auth,
   User,
@@ -26,6 +28,16 @@ export class AuthService {
       this.router.navigateByUrl('/home');
     } catch (error) {
       console.error('Login error:', error);
+    }
+  }
+
+  async loginWithGoogle(): Promise<UserCredential | null> {
+    try {
+      const provider = new GoogleAuthProvider();
+      return await signInWithPopup(this.auth, provider);
+    } catch (error) {
+      console.error('Google login error:', error);
+      return null;
     }
   }
 
