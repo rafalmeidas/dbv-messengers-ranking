@@ -1,0 +1,24 @@
+/* ✅ TODAS as variáveis no mesmo nível: `html` */
+html.light-theme {
+  --color-primary: #0d47a1;
+  --color-on-primary: #ffffff;
+  --color-hover: #1f56b2;
+  --color-pressed: #0a387e;
+  --color-outline: #3f67b3;
+}
+
+html.dark-theme {
+  --color-primary: #5472d3;
+  --color-on-primary: #000000;
+  --color-hover: #6681db;
+  --color-pressed: #4359b3;
+  --color-outline: #738cde;
+}
+
+:root {
+  --color-primary: var(--theme-primary);
+  --color-on-primary: var(--theme-on-primary);
+  --color-text-high: var(--theme-high);
+  --color-text-low: var(--theme-low);
+  --color-text-lowest: var(--theme-lowest);
+}
