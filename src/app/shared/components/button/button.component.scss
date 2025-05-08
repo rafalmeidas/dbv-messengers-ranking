@@ -1,0 +1,22 @@
+:host {
+  display: inline-flex;
+}
+
+button {
+  padding: 0;
+  margin: 0;
+  border: 0;
+}
+
+button:not(:disabled) {
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: not-allowed;
+}
+
+@import url(./styles/icon.scss);
+@import url(./styles/outline.scss);
+@import url(./styles/primary.scss);
+@import url(./styles/text.scss);

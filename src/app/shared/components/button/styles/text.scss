@@ -1,0 +1,29 @@
+.text {
+  background-color: transparent;
+  color: var(--color-primary);
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 4px;
+
+  &:not(:disabled) {
+    &:hover {
+      background-color: var(--color-hover);
+      color: var(--color-on-primary);
+    }
+
+    &:active {
+      background-color: var(--color-pressed);
+      color: var(--color-on-primary);
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--color-outline);
+      outline-offset: 2px;
+    }
+  }
+
+  &:disabled {
+    color: var(--color-text-low);
+    cursor: not-allowed;
+  }
+}

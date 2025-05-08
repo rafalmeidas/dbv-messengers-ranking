@@ -1,0 +1,31 @@
+.outline {
+  background-color: transparent;
+  color: var(--color-primary);
+  outline: 2px solid var(--color-outline);
+  outline-offset: -2px;
+  padding: 0.6rem 1.2rem;
+  border-radius: 4px;
+
+  &:not(:disabled) {
+    &:hover {
+      background-color: var(--color-hover);
+      color: var(--color-on-primary);
+    }
+
+    &:active {
+      background-color: var(--color-pressed);
+      color: var(--color-on-primary);
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--color-outline);
+      outline-offset: 2px;
+    }
+  }
+
+  &:disabled {
+    outline-color: var(--color-text-lowest);
+    color: var(--color-text-low);
+    cursor: not-allowed;
+  }
+}
