@@ -1,2 +1,29 @@
-<p>home works!</p>
-<button (click)="logout()">Logout</button>
+<app-button (onClick)="logout()">Logout</app-button>
+
+<br />
+<br />
+
+<div style="display: flex; gap: 4px">
+  <app-button variant="primary" (onClick)="logout()">Primary</app-button>
+  <app-button variant="outline" (onClick)="logout()">outline</app-button>
+  <app-button variant="text" (onClick)="logout()">text</app-button>
+  <app-button variant="icon" (onClick)="logout()">i</app-button>
+</div>
+
+<br />
+<br />
+
+<div style="display: flex; gap: 4px">
+  <app-button variant="primary" [disabled]="true" (onClick)="logout()"
+    >Primary</app-button
+  >
+  <app-button variant="outline" [disabled]="true" (onClick)="logout()"
+    >outline</app-button
+  >
+  <app-button variant="text" [disabled]="true" (onClick)="logout()"
+    >text</app-button
+  >
+  <app-button variant="icon" [disabled]="true" (onClick)="logout()"
+    >i</app-button
+  >
+</div>
