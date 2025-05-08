@@ -14,6 +14,7 @@ html.light-theme {
   --color-hover: #195abf;
   --color-pressed: #0a357a;
   --color-outline: #82b1ff;
+  --color-outline-variant: #c5cae9;
 
   --color-text-high: var(--theme-high);
   --color-text-low: var(--theme-low);
@@ -36,6 +37,7 @@ html.dark-theme {
   --color-hover: #6b86e0;
   --color-pressed: #3f5eb1;
   --color-outline: #8ea6f3;
+  --color-outline-variant: #3f51b5;
 
   --color-text-high: var(--theme-high);
   --color-text-low: var(--theme-low);
