@@ -1,3 +1,7 @@
-<button [ngClass]="variant" [disabled]="disabled" (click)="onClick.emit()">
+<button
+  [ngClass]="variant"
+  [disabled]="disabled"
+  (click)="!disabled && onClick.emit()"
+>
   <ng-content></ng-content>
 </button>
