@@ -16,4 +16,15 @@
   />
   <button type="submit" [disabled]="registerForm.invalid">Register</button>
 </form>
-<button (click)="navigateToLogin()">Login</button>
+
+<app-button
+  variant="outline"
+  label="Entrar com Google"
+  (onClick)="registerWithGoogle()"
+></app-button>
+<br />
+<br />
+<app-button
+  label="Já é cadastrado? Ir para Login"
+  (onClick)="navigateToLogin()"
+></app-button>
