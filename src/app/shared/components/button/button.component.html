@@ -1,7 +1,9 @@
 <button
   [ngClass]="variant"
   [disabled]="disabled"
+  [type]="type"
   (click)="!disabled && onClick.emit()"
 >
-  <ng-content></ng-content>
+  <span *ngIf="showLabel">{{ label }}</span>
+  <!-- <ng-icon *ngIf="isOnlyIcon" name="heroPlusSolid"></ng-icon> -->
 </button>
