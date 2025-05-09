@@ -1,0 +1,62 @@
+:host {
+  .input-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    font-family: inherit;
+
+    label {
+      font-size: 0.875rem;
+      color: var(--color-text-low);
+    }
+
+    input {
+      padding: 0.5rem 0.75rem;
+      border: 1px solid var(--color-outline-variant);
+      border-radius: 8px;
+      background-color: var(--theme-surface);
+      color: var(--color-text-high);
+      font-size: 1rem;
+      transition: border-color 0.2s, box-shadow 0.2s;
+
+      &:hover {
+        border-color: var(--color-outline);
+      }
+
+      &:focus {
+        border-color: var(--color-primary);
+        box-shadow: 0 0 0 2px
+          color-mix(in srgb, var(--color-primary), transparent 80%);
+        outline: none;
+      }
+
+      &:active {
+        border-color: var(--color-pressed);
+      }
+
+      &:disabled {
+        background-color: var(--theme-surface);
+        color: var(--color-text-lowest);
+        border-color: var(--color-outline-variant);
+        cursor: not-allowed;
+      }
+    }
+
+    &.focused input {
+      border-color: var(--color-primary);
+    }
+
+    &.disabled label {
+      color: var(--color-text-lowest);
+    }
+
+    &.error input {
+      border-color: var(--color-error);
+    }
+
+    .error-text {
+      font-size: 0.75rem;
+      color: var(--color-error);
+    }
+  }
+}

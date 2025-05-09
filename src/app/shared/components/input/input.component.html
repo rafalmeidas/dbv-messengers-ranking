@@ -1,0 +1,20 @@
+<div
+  class="input-wrapper"
+  [class.focused]="focused"
+  [class.filled]="value"
+  [class.disabled]="disabled"
+  [class.error]="error"
+>
+  <label *ngIf="label">{{ label }}</label>
+  <input
+    [type]="type"
+    [value]="value"
+    [disabled]="disabled"
+    [attr.placeholder]="placeholder"
+    [attr.name]="name"
+    (input)="onInput($event)"
+    (focus)="onFocus()"
+    (blur)="onBlur()"
+  />
+  <span *ngIf="error" class="error-text">{{ error }}</span>
+</div>
