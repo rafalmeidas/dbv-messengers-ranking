@@ -1,19 +1,38 @@
 import { Component } from '@angular/core';
-import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
+import {
+  ReactiveFormsModule,
+  FormControl,
+  Validators,
+  FormGroup,
+} from '@angular/forms';
 
 import { ButtonComponent } from '../../../shared/components/button/button.component';
+import { InputComponent } from '../../../shared/components/input/input.component';
 import { AuthService } from '../../services/auth/auth.service';
 
 @Component({
   selector: 'app-login',
-  imports: [FormsModule, ButtonComponent],
+  imports: [ReactiveFormsModule, ButtonComponent, InputComponent],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss',
 })
 export class LoginComponent {
-  email = 'rafalmeidas@gmail.com';
-  password = '123456';
+  formGroup: FormGroup = new FormGroup({
+    email: new FormControl('', [Validators.required, Validators.email]),
+    password: new FormControl('', [
+      Validators.required,
+      Validators.minLength(5),
+    ]),
+  });
+
+  get email(): string {
+    return this.formGroup.get('email')?.value;
+  }
+
+  get password(): string {
+    return this.formGroup.get('password')?.value;
+  }
 
   constructor(private authService: AuthService, private router: Router) {}
 

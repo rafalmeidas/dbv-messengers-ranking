@@ -1,24 +1,35 @@
 <section class="login">
-  <form (ngSubmit)="login()">
-    <input [(ngModel)]="email" name="email" placeholder="Email" />
-    <input
-      [(ngModel)]="password"
+  <form [formGroup]="formGroup" (ngSubmit)="login()">
+    <app-input
+      label="E-mail"
+      formControlName="email"
+      name="email"
+      type="email"
+      placeholder="Email"
+    ></app-input>
+
+    <app-input
+      label="Senha"
+      formControlName="password"
       name="password"
       type="password"
       placeholder="Senha"
-    />
+    ></app-input>
+
     <app-button type="submit" label="Entrar"></app-button>
   </form>
 
-  <app-button
-    variant="outline"
-    label="Login com Google"
-    (onClick)="loginWithGoogle()"
-  ></app-button>
+  <article>
+    <app-button
+      variant="outline"
+      label="Login com Google"
+      (onClick)="loginWithGoogle()"
+    ></app-button>
 
-  <app-button
-    variant="text"
-    label="Registre-se"
-    (onClick)="navigateToRegister()"
-  ></app-button>
+    <app-button
+      variant="text"
+      label="Registre-se"
+      (onClick)="navigateToRegister()"
+    ></app-button>
+  </article>
 </section>
