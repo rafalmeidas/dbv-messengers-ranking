@@ -1,6 +1,13 @@
 <section class="register">
   <form [formGroup]="formGroup" (ngSubmit)="register()">
     <app-input
+      label="Nome"
+      formControlName="name"
+      name="name"
+      placeholder="Nome"
+    ></app-input>
+
+    <app-input
       label="E-mail"
       formControlName="email"
       name="email"

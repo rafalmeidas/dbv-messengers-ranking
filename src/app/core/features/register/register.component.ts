@@ -21,16 +21,21 @@ import { InputComponent } from '../../../shared/components/input/input.component
 })
 export class RegisterComponent {
   formGroup: FormGroup = new FormGroup({
+    name: new FormControl('', [Validators.required]),
     email: new FormControl('', [Validators.required, Validators.email]),
     password: new FormControl('', [
       Validators.required,
-      Validators.minLength(5),
+      Validators.minLength(6),
     ]),
   });
 
   private authService = inject(AuthService);
   private userService = inject(UserService);
   private router = inject(Router);
+
+  get name(): string {
+    return this.formGroup.get('name')?.value;
+  }
 
   get email(): string {
     return this.formGroup.get('email')?.value;
@@ -45,19 +50,20 @@ export class RegisterComponent {
       this.email,
       this.password
     );
-    this.saveCredentials(credentials);
+    this.saveCredentials(credentials, this.name);
   }
 
   async registerWithGoogle(): Promise<void> {
     const credentials = await this.authService.loginWithGoogle();
-    this.saveCredentials(credentials);
+    this.saveCredentials(credentials, credentials?.user.displayName ?? '');
   }
 
   private async saveCredentials(
-    credentials: UserCredential | null
+    credentials: UserCredential | null,
+    name: string
   ): Promise<void> {
     if (credentials) {
-      await this.userService.setUserRole('user', credentials.user.uid);
+      await this.userService.setUserRole('user', credentials.user.uid, name);
       this.router.navigateByUrl('/home');
     }
   }
