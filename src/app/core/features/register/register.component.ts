@@ -1,25 +1,44 @@
 import { Component, inject } from '@angular/core';
 import { UserCredential } from 'firebase/auth';
-import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
+import {
+  ReactiveFormsModule,
+  FormControl,
+  Validators,
+  FormGroup,
+} from '@angular/forms';
 
 import { ButtonComponent } from '../../../shared/components/button/button.component';
 import { AuthService } from '../../services/auth/auth.service';
 import { UserService } from '../../services/user/user.service';
+import { InputComponent } from '../../../shared/components/input/input.component';
 
 @Component({
   selector: 'app-register',
-  imports: [FormsModule, ButtonComponent],
+  imports: [ReactiveFormsModule, ButtonComponent, InputComponent],
   templateUrl: './register.component.html',
   styleUrl: './register.component.scss',
 })
 export class RegisterComponent {
-  email = '';
-  password = '';
+  formGroup: FormGroup = new FormGroup({
+    email: new FormControl('', [Validators.required, Validators.email]),
+    password: new FormControl('', [
+      Validators.required,
+      Validators.minLength(5),
+    ]),
+  });
 
   private authService = inject(AuthService);
   private userService = inject(UserService);
   private router = inject(Router);
+
+  get email(): string {
+    return this.formGroup.get('email')?.value;
+  }
+
+  get password(): string {
+    return this.formGroup.get('password')?.value;
+  }
 
   async register(): Promise<void> {
     const credentials = await this.authService.register(

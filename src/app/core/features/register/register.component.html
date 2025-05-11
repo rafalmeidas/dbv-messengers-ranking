@@ -1,30 +1,35 @@
-<h2>Register</h2>
-<form #registerForm="ngForm" (ngSubmit)="register()">
-  <input
-    type="email"
-    name="email"
-    placeholder="Email"
-    [(ngModel)]="email"
-    required
-  />
-  <input
-    type="password"
-    name="password"
-    placeholder="Password"
-    [(ngModel)]="password"
-    required
-  />
-  <button type="submit" [disabled]="registerForm.invalid">Register</button>
-</form>
+<section class="register">
+  <form [formGroup]="formGroup" (ngSubmit)="register()">
+    <app-input
+      label="E-mail"
+      formControlName="email"
+      name="email"
+      type="email"
+      placeholder="Email"
+    ></app-input>
 
-<app-button
-  variant="outline"
-  label="Entrar com Google"
-  (onClick)="registerWithGoogle()"
-></app-button>
-<br />
-<br />
-<app-button
-  label="Já é cadastrado? Ir para Login"
-  (onClick)="navigateToLogin()"
-></app-button>
+    <app-input
+      label="Senha"
+      formControlName="password"
+      name="password"
+      type="password"
+      placeholder="Senha"
+    ></app-input>
+
+    <app-button type="submit" label="Cadastrar" [disabled]="formGroup.invalid">
+    </app-button>
+  </form>
+
+  <article>
+    <app-button
+      variant="outline"
+      label="Cadastre-se com Google"
+      (onClick)="registerWithGoogle()"
+    ></app-button>
+
+    <app-button
+      label="Já é cadastrado? Ir para Login"
+      (onClick)="navigateToLogin()"
+    ></app-button>
+  </article>
+</section>
