@@ -5,5 +5,5 @@
   (click)="!disabled && onClick.emit()"
 >
   <span *ngIf="showLabel">{{ label }}</span>
-  <!-- <ng-icon *ngIf="isOnlyIcon" name="heroPlusSolid"></ng-icon> -->
+  <i *ngIf="!showLabel" aria-hidden="true" [ngStyle]="iconStyle"></i>
 </button>

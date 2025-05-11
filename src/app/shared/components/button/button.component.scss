@@ -11,10 +11,21 @@ button {
 
 button:not(:disabled) {
   cursor: pointer;
+
+  > i {
+    display: inline-flex;
+    width: 18px;
+    height: 18px;
+    background-color: var(--color-on-primary);
+  }
 }
 
 button:disabled {
   cursor: not-allowed;
+
+  > i {
+    background-color: var(--color-text-low);
+  }
 }
 
 @import url(./styles/icon.scss);

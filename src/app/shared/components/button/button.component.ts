@@ -20,9 +20,21 @@ export class ButtonComponent implements OnInit {
 
   isOnlyIcon: boolean = false;
   showLabel: boolean = false;
+  showIcon: boolean = false;
+  iconStyle: Record<string, string> = {};
 
   ngOnInit(): void {
     this.isOnlyIcon = this.variant === 'icon';
     this.showLabel = !this.isOnlyIcon && !!this.label;
+    this.showIcon = !!this.icon || !this.isOnlyIcon;
+
+    this.iconStyle = {
+      mask: `var(--icon-${this.icon}-24dp)`,
+      '-webkit-mask': `var(--icon-${this.icon}-24dp)`,
+      'mask-size': 'contain',
+      '-webkit-mask-size': 'contain',
+      'mask-position': 'center',
+      '-webkit-mask-position': 'center',
+    };
   }
 }
