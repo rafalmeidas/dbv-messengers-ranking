@@ -1,0 +1,32 @@
+:host {
+  > div {
+    width: 100%;
+    background: var(--theme-surface);
+    color: var(--color-text-low);
+    padding: 16px;
+    border-radius: 8px;
+
+    > section {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+    }
+
+    > ul {
+      width: 100%;
+      margin-top: 16px;
+      list-style: none;
+      display: flex;
+      padding: 16px;
+      border: 1px solid var(--color-outline-variant);
+      border-radius: 8px;
+
+      > li {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+    }
+  }
+}
