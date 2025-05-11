@@ -1,9 +1,16 @@
-import { Firestore, doc, getDoc, setDoc } from '@angular/fire/firestore';
-import { BehaviorSubject, firstValueFrom, from, of } from 'rxjs';
-import { switchMap, tap } from 'rxjs/operators';
+import {
+  Firestore,
+  collectionData,
+  doc,
+  getDoc,
+  setDoc,
+} from '@angular/fire/firestore';
+import { BehaviorSubject, firstValueFrom, from, Observable, of } from 'rxjs';
+import { switchMap } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
 
 import { AuthService } from '../auth/auth.service';
+import { collection, query, where } from 'firebase/firestore';
 
 @Injectable({
   providedIn: 'root',
@@ -13,9 +20,13 @@ export class UserService {
 
   constructor(private firestore: Firestore, private authService: AuthService) {}
 
-  async setUserRole(role: 'admin' | 'user', uid: string): Promise<void> {
+  async setUserRole(
+    role: 'admin' | 'user',
+    uid: string,
+    name: string
+  ): Promise<void> {
     const ref = doc(this.firestore, `users/${uid}`);
-    await setDoc(ref, { role }, { merge: true });
+    await setDoc(ref, { role, uid, name }, { merge: true });
     this.role$.next(role);
   }
 
@@ -26,6 +37,18 @@ export class UserService {
         return from(this.loadUserRole());
       })
     );
+  }
+
+  getAllUsersWithRole(role: 'admin' | 'user'): Observable<any[]> {
+    const ref = collection(this.firestore, 'users');
+    const q = query(ref, where('role', '==', role));
+    return collectionData(q, { idField: 'uid' });
+  }
+
+  getAllUsers(role?: 'admin' | 'user'): Observable<any[]> {
+    const ref = collection(this.firestore, 'users');
+    const q = role ? query(ref, where('role', '==', role)) : ref;
+    return collectionData(q, { idField: 'uid' });
   }
 
   private async loadUserRole(): Promise<'admin' | 'user'> {
