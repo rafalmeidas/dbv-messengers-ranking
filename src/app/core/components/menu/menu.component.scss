@@ -1,0 +1,49 @@
+.sidebar {
+  width: 250px;
+  height: 100vh;
+  background-color: var(--theme-surface);
+  border-right: 1px solid var(--color-outline-variant);
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  li {
+    margin-bottom: 1rem;
+
+    a {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      color: var(--color-text-high);
+      text-decoration: none;
+      font-weight: 500;
+      padding: 0.5rem;
+      border-radius: 8px;
+      transition: background-color 0.2s;
+
+      &:hover {
+        background-color: var(--color-hover);
+        color: var(--color-on-primary);
+      }
+
+      &.active {
+        background-color: var(--color-pressed);
+        color: var(--color-on-primary);
+      }
+
+      .icon {
+        width: 24px;
+        height: 24px;
+        background-color: currentColor;
+        mask-repeat: no-repeat;
+        mask-size: cover;
+      }
+    }
+  }
+}

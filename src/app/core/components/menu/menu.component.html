@@ -1,0 +1,15 @@
+<nav class="sidebar">
+  <ul>
+    <li *ngFor="let link of links">
+      <a [routerLink]="link.path" routerLinkActive="active">
+        <span
+          class="icon"
+          *ngIf="link.icon"
+          [style.mask]="`var(--icon-${link.icon}-24dp)`"
+          [style.webkitMask]="`var(--icon-${link.icon}-24dp)`"
+        ></span>
+        <span>{{ link.label }}</span>
+      </a>
+    </li>
+  </ul>
+</nav>
