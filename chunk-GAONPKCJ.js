@@ -1,0 +1,1 @@
+import{K as n,Za as m,u as t}from"./chunk-CNQPEQOC.js";var i=class e{authService=t(m);logout(){this.authService.logout()}static \u0275fac=function(o){return new(o||e)};static \u0275cmp=n({type:e,selectors:[["app-home"]],decls:0,vars:0,template:function(o,p){},encapsulation:2})};export{i as HomeComponent};
