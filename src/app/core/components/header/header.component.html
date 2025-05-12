@@ -1,0 +1,15 @@
+<header class="header">
+  <div class="user-info" *ngIf="user">
+    <div>
+      <img
+        [src]="
+          user.photoURL ||
+          'https://ui-avatars.com/api/?name=' + user.displayName
+        "
+        class="avatar"
+      />
+      <span class="username">{{ user.displayName || "Usuário" }}</span>
+    </div>
+    <app-button (onClick)="logout()" variant="icon" icon="logout"></app-button>
+  </div>
+</header>

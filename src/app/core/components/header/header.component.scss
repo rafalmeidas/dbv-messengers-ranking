@@ -1,0 +1,43 @@
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 16px;
+  background-color: var(--theme-surface);
+  border-bottom: 1px solid var(--color-outline-variant);
+  color: var(--color-text-high);
+
+  .user-info {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    width: 100%;
+    justify-content: space-between;
+
+    > div {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .avatar {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      border: 2px solid var(--color-outline);
+    }
+
+    .username {
+      font-weight: 500;
+      color: var(--color-text-high);
+    }
+  }
+
+  @media screen and (min-width: 768px) {
+    justify-content: flex-end;
+
+    .user-info {
+      justify-content: flex-end;
+    }
+  }
+}
