@@ -9,23 +9,19 @@ button {
   width: 100%;
 }
 
-button:not(:disabled) {
+button {
   cursor: pointer;
 
   > i {
     display: inline-flex;
     width: 18px;
     height: 18px;
-    background-color: var(--color-on-primary);
+    background-color: currentColor;
   }
 }
 
 button:disabled {
   cursor: not-allowed;
-
-  > i {
-    background-color: var(--color-text-low);
-  }
 }
 
 @import url(./styles/icon.scss);
