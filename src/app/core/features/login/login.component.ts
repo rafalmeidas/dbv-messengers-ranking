@@ -37,20 +37,20 @@ export class LoginComponent {
   constructor(private authService: AuthService, private router: Router) {}
 
   login(): void {
-    this.authService
-      .login(this.email, this.password)
-      .then(() => this.router.navigateByUrl('/home'))
-      .catch((err) => alert('Erro: ' + err.message));
+    this.handlePromise(this.authService.login(this.email, this.password));
   }
 
   loginWithGoogle(): void {
-    this.authService
-      .loginWithGoogle()
-      .then(() => this.router.navigateByUrl('/home'))
-      .catch((err) => alert('Erro: ' + err.message));
+    this.handlePromise(this.authService.loginWithGoogle());
   }
 
-  navigateToRegister() {
+  navigateToRegister(): void {
     this.router.navigate(['/register']);
+  }
+
+  private handlePromise(promise: Promise<any>) {
+    promise
+      .then(() => this.router.navigateByUrl('/home'))
+      .catch((err) => alert('Erro: ' + err.message));
   }
 }

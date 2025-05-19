@@ -1,16 +1,23 @@
+import { BehaviorSubject, firstValueFrom, from, Observable, of } from 'rxjs';
+import { collection, query, where } from 'firebase/firestore';
+import { Injectable } from '@angular/core';
+import { switchMap } from 'rxjs/operators';
 import {
-  Firestore,
   collectionData,
-  doc,
+  Firestore,
+  docData,
   getDoc,
   setDoc,
+  doc,
 } from '@angular/fire/firestore';
-import { BehaviorSubject, firstValueFrom, from, Observable, of } from 'rxjs';
-import { switchMap } from 'rxjs/operators';
-import { Injectable } from '@angular/core';
 
 import { AuthService } from '../auth/auth.service';
-import { collection, query, where } from 'firebase/firestore';
+
+export interface IUser {
+  uid: string;
+  name: string;
+  role: 'admin' | 'user';
+}
 
 @Injectable({
   providedIn: 'root',
@@ -30,7 +37,7 @@ export class UserService {
     this.role$.next(role);
   }
 
-  getUserRole$() {
+  getUserRole$(): Observable<'admin' | 'user'> {
     return this.role$.pipe(
       switchMap((role) => {
         if (role) return of(role);
@@ -51,6 +58,21 @@ export class UserService {
     return collectionData(q, { idField: 'uid' });
   }
 
+  getLoggedUserData(): Observable<any | null> {
+    return this.authService.currentUser.pipe(
+      switchMap((user) => {
+        if (!user) return of(null);
+
+        const ref = doc(this.firestore, `users/${user.uid}`);
+        return docData(ref, { idField: 'uid' });
+      })
+    );
+  }
+
+  resetRole() {
+    this.role$.next(null);
+  }
+
   private async loadUserRole(): Promise<'admin' | 'user'> {
     const user = await firstValueFrom(this.authService.currentUser);
     if (!user) return 'user';
@@ -60,9 +82,5 @@ export class UserService {
     const role = (snapshot.data() as any)?.role ?? 'user';
     this.role$.next(role);
     return role;
-  }
-
-  resetRole() {
-    this.role$.next(null);
   }
 }

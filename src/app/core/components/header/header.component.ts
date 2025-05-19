@@ -2,10 +2,14 @@ import { Component, inject } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { Auth } from '@angular/fire/auth';
-import { User } from 'firebase/auth';
 
 import { ButtonComponent } from '../../../shared/components/button/button.component';
 import { AuthService } from '../../services/auth/auth.service';
+import { IUser, UserService } from '../../services/user/user.service';
+
+interface UserHeader extends IUser {
+  photoURL?: string;
+}
 
 @Component({
   selector: 'app-header',
@@ -16,16 +20,20 @@ import { AuthService } from '../../services/auth/auth.service';
 export class HeaderComponent {
   private auth = inject(Auth);
   private authService = inject(AuthService);
+  private userService = inject(UserService);
 
-  user: User | null = null;
+  user: UserHeader | null = null;
 
   constructor() {
-    this.auth.onAuthStateChanged((user) => {
-      this.user = user;
+    this.userService.getLoggedUserData().subscribe((res) => {
+      this.user = {
+        ...res,
+        photoURL: this.auth.currentUser?.photoURL ?? undefined,
+      };
     });
   }
 
-  logout() {
+  logout(): void {
     this.authService.logout();
   }
 }
