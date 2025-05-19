@@ -1,7 +1,7 @@
 <div class="layout">
-  <app-header class="header"></app-header>
+  <app-header *ngIf="user" class="header"></app-header>
   <div class="main-container">
-    <app-menu class="sidebar"></app-menu>
+    <app-menu *ngIf="user" class="sidebar"></app-menu>
     <main class="content">
       <router-outlet></router-outlet>
     </main>

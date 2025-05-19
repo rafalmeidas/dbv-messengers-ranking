@@ -1,4 +1,6 @@
 import { Component, inject, OnInit } from '@angular/core';
+import { Auth, User } from '@angular/fire/auth';
+import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 
 import { HeaderComponent } from './core/components/header/header.component';
@@ -8,13 +10,21 @@ import { Theme } from './shared/services/theme/types';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, HeaderComponent, MenuComponent],
+  imports: [CommonModule, RouterOutlet, HeaderComponent, MenuComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
 export class AppComponent implements OnInit {
   private themeService = inject(ThemeService);
+  private auth = inject(Auth);
 
+  user: User | null = null;
+
+  constructor() {
+    this.auth.onAuthStateChanged((user) => {
+      this.user = user;
+    });
+  }
   ngOnInit(): void {
     this.themeService.initTheme();
   }

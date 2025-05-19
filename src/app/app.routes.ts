@@ -7,6 +7,13 @@ import { authGuard } from './core/guards/auth.guard';
 
 export const routes: Routes = _.concat(coreRoutes, [
   {
+    path: 'unauthorized',
+    loadComponent: () =>
+      import('./core/features/unauthorized/unauthorized.component').then(
+        (c) => c.UnauthorizedComponent
+      ),
+  },
+  {
     path: 'home',
     loadComponent: () =>
       import('./features/home/home.component').then((c) => c.HomeComponent),
