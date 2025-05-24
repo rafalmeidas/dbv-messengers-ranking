@@ -1,20 +1,17 @@
-<div
-  class="input-wrapper"
-  [class.focused]="focused"
-  [class.filled]="value"
-  [class.disabled]="disabled"
-  [class.error]="error"
+<app-form-group
+  [label]="label"
+  [focused]="focused"
+  [disabled]="disabled"
+  [error]="error"
 >
-  <label *ngIf="label">{{ label }}</label>
   <input
     [type]="type"
-    [value]="value"
+    [(ngModel)]="value"
     [disabled]="disabled"
     [attr.placeholder]="placeholder"
     [attr.name]="name"
+    [class.error]="!!error"
     (input)="onInput($event)"
     (focus)="onFocus()"
     (blur)="onBlur()"
-  />
-  <span *ngIf="error" class="error-text">{{ error }}</span>
-</div>
+/></app-form-group>
