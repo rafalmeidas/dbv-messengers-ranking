@@ -1,0 +1,15 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  > h1 {
+    color: var(--color-text-high);
+  }
+
+  > form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+}

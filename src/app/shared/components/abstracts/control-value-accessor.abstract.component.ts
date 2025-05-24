@@ -28,7 +28,7 @@ const DEFAULT_MESSAGES: Record<ErrorKey, string> = {
   template: '',
   imports: [],
 })
-export class ControlValueAccessorAbstractComponent
+export abstract class ControlValueAccessorAbstractComponent<T>
   implements ControlValueAccessor
 {
   @Input() label?: string;
@@ -36,11 +36,10 @@ export class ControlValueAccessorAbstractComponent
   @Input() placeholder?: string;
   @Input() disabled: boolean = false;
   @Input() required: boolean = false;
-  @Input() errorMessages: Record<ErrorKey, string> = {
-    ...DEFAULT_MESSAGES,
-  };
+  @Input() errorMessages: Record<ErrorKey, string> = { ...DEFAULT_MESSAGES };
 
-  value: string = '';
+  value!: T;
+
   focused: boolean = false;
   touched: boolean = false;
 
@@ -76,14 +75,15 @@ export class ControlValueAccessorAbstractComponent
     );
   }
 
-  onChange = (_value: string) => {};
+  onChange = (_value: T) => {};
+
   onTouched = () => {};
 
-  writeValue(value: string): void {
+  writeValue(value: T): void {
     this.value = value;
   }
 
-  registerOnChange(fn: (value: string) => void): void {
+  registerOnChange(fn: (value: T) => void): void {
     this.onChange = fn;
   }
 
@@ -97,7 +97,7 @@ export class ControlValueAccessorAbstractComponent
 
   onInput(event: Event) {
     const input = event.target as HTMLInputElement;
-    const value = input.value;
+    const value = input.value as unknown as T;
     this.value = value;
     this.onChange(value);
   }

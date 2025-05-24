@@ -11,6 +11,7 @@ import { Component } from '@angular/core';
 export class MenuComponent {
   links: { label: string; icon?: string; path: string }[] = [
     { label: 'Home', path: '/home', icon: 'home' },
-    { label: 'Units', path: '/unit', icon: 'diversity-3' },
+    { label: 'Unidades', path: '/unit', icon: 'diversity-3' },
+    { label: 'Desbravadores', path: '/trailblazer', icon: 'diversity-3' },
   ];
 }

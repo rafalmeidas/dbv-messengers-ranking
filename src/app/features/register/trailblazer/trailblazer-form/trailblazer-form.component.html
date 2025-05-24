@@ -1,0 +1,26 @@
+<h1>{{ isEditMode ? "Editar desbravador" : "Criar desbravador" }}</h1>
+
+<form [formGroup]="form" (ngSubmit)="submit()">
+  <app-input
+    label="Nome"
+    formControlName="name"
+    name="name"
+    placeholder="Nome"
+  ></app-input>
+
+  <app-select
+    label="Selecione a unidade"
+    formControlName="unitId"
+    name="unitId"
+    placeholder="Selecione a unidade"
+    [options]="units"
+    labelKey="name"
+    valueKey="id"
+  ></app-select>
+
+  <app-button
+    type="submit"
+    [disabled]="form.invalid"
+    label="Salvar"
+  ></app-button>
+</form>
