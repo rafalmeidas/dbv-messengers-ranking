@@ -1,0 +1,20 @@
+<app-form-group
+  [label]="label"
+  [focused]="focused"
+  [disabled]="disabled"
+  [error]="error"
+>
+  <select
+    [disabled]="disabled"
+    [(ngModel)]="value"
+    [attr.name]="name"
+    [class.error]="!!error"
+    (focus)="onFocus()"
+    (blur)="onBlur()"
+    (change)="onSelectChange($event)"
+  >
+    <option *ngFor="let opt of options" [value]="opt[valueKey]">
+      {{ opt[labelKey] }}
+    </option>
+  </select>
+</app-form-group>
