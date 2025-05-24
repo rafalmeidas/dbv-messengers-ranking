@@ -1,0 +1,22 @@
+:host {
+  .input-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    font-family: inherit;
+
+    label {
+      font-size: 0.875rem;
+      color: var(--color-text-low);
+    }
+
+    &.disabled label {
+      color: var(--color-text-lowest);
+    }
+
+    .error-text {
+      font-size: 0.75rem;
+      color: var(--color-error);
+    }
+  }
+}
