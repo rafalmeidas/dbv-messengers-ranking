@@ -12,6 +12,7 @@ export class MenuComponent {
   links: { label: string; icon?: string; path: string }[] = [
     { label: 'Home', path: '/home', icon: 'home' },
     { label: 'Unidades', path: '/unit', icon: 'diversity-3' },
-    { label: 'Desbravadores', path: '/trailblazer', icon: 'diversity-3' },
+    { label: 'Desbravadores', path: '/trailblazer', icon: 'groups-2' },
+    { label: 'Peguntas', path: '/question', icon: 'rate-review' },
   ];
 }

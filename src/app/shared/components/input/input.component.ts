@@ -12,5 +12,6 @@ import { FormGroupComponent } from '../form-group/form-group.component';
   styleUrl: './input.component.scss',
 })
 export class InputComponent extends ControlValueAccessorAbstractComponent<string> {
-  @Input() type: 'text' | 'password' | 'email' = 'text';
+  @Input() type: 'text' | 'password' | 'email' | 'number' = 'text';
+  @Input() min?: string | number;
 }

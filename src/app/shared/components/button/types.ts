@@ -8,6 +8,7 @@ export const ButtonIcons = [
   'link',
   'login',
   'logout',
+  'delete',
   'google',
 ] as const;
 export type ButtonIcon = (typeof ButtonIcons)[number];

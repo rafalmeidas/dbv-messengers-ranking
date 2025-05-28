@@ -11,7 +11,7 @@ import {
   doc,
 } from '@angular/fire/firestore';
 
-import { Trailblazer } from '../../models/trailblazer';
+import { Trailblazer } from '../../models/trailblazer.model';
 
 @Injectable({
   providedIn: 'root',

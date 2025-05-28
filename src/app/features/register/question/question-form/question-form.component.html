@@ -1,0 +1,56 @@
+<h1>{{ isEditMode ? "Editar questionário" : "Criar questionário" }}</h1>
+
+<form [formGroup]="form" (ngSubmit)="onSubmit()" class="space-y-4">
+  <app-input
+    label="Nome do Questionário"
+    formControlName="name"
+    name="name"
+    placeholder="Digite o nome"
+  ></app-input>
+
+  <div class="container">
+    <app-input
+      label="Pergunta"
+      [formControl]="newQuestionControl"
+      name="name"
+      placeholder="Digite a Pergunta"
+    ></app-input>
+
+    <app-input
+      label="Pontos"
+      [formControl]="newPointsControl"
+      name="name"
+      placeholder="Digite os pontos"
+      type="number"
+      min="0"
+    ></app-input>
+
+    <app-button
+      type="button"
+      label="Adicionar"
+      (onClick)="addQuestion()"
+    ></app-button>
+  </div>
+
+  <div *ngIf="questions.length > 0" class="container-list">
+    <h3>Perguntas adicionadas:</h3>
+
+    <ul>
+      <li *ngFor="let item of questions; let i = index">
+        <span>{{ item.text }}</span>
+        <span>{{ item.points }}</span>
+        <app-button
+          variant="icon"
+          icon="delete"
+          (onClick)="removeQuestion(i)"
+        ></app-button>
+      </li>
+    </ul>
+  </div>
+
+  <app-button
+    type="submit"
+    [disabled]="form.invalid"
+    label="Salvar"
+  ></app-button>
+</form>

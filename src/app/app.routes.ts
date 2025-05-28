@@ -31,4 +31,10 @@ export const routes: Routes = _.concat(coreRoutes, [
     loadChildren: () =>
       import('./features/register/trailblazer/routes').then((m) => m.ROUTES),
   },
+  {
+    path: 'question',
+    canActivate: [authGuard, adminGuard],
+    loadChildren: () =>
+      import('./features/register/question/routes').then((m) => m.ROUTES),
+  },
 ]);

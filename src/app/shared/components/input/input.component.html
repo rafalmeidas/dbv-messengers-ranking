@@ -11,6 +11,7 @@
     [attr.placeholder]="placeholder"
     [attr.name]="name"
     [class.error]="!!error"
+    [min]="min"
     (input)="onInput($event)"
     (focus)="onFocus()"
     (blur)="onBlur()"

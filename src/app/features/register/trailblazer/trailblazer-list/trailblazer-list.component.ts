@@ -2,7 +2,7 @@ import { Component, inject } from '@angular/core';
 
 import { TrailblazerService } from '../../../../shared/services/trailblazer/trailblazer.service';
 import { ListComponent } from '../../../../shared/components/list/list.component';
-import { Trailblazer } from '../../../../shared/models/trailblazer';
+import { Trailblazer } from '../../../../shared/models/trailblazer.model';
 
 @Component({
   selector: 'app-trailblazer-list',
