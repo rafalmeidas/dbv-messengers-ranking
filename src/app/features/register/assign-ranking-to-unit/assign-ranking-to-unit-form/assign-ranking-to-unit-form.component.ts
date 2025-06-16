@@ -10,6 +10,7 @@ import { Unit } from '../../../../shared/models/unit.model';
 import { AssignRankingToUnitService } from '../../../../shared/services/assign-ranking-to-unit/assign-ranking-to-unit.service';
 import { Questionnaire } from '../../../../shared/models/question.model';
 import { QuestionService } from '../../../../shared/services/question/question.service';
+import { ToggleSwitchComponent } from '../../../../shared/components/toggle-switch/toggle-switch.component';
 
 @Component({
   selector: 'app-assign-ranking-to-unit-form',
@@ -18,6 +19,7 @@ import { QuestionService } from '../../../../shared/services/question/question.s
     ButtonComponent,
     SelectComponent,
     InputComponent,
+    ToggleSwitchComponent,
   ],
   templateUrl: './assign-ranking-to-unit-form.component.html',
   styleUrl: './assign-ranking-to-unit-form.component.scss',
@@ -36,6 +38,7 @@ export class AssignRankingToUnitFormComponent {
     name: ['', Validators.required],
     unitId: ['', Validators.required],
     questionnaireId: ['', Validators.required],
+    active: [false],
   });
 
   isEditMode = false;

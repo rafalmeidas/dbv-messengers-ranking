@@ -20,7 +20,6 @@ export class SelectComponent<T> extends ControlValueAccessorAbstractComponent<
   @Input({ required: true }) valueKey!: keyof T;
 
   onSelectChange(event: Event) {
-    console.log(event);
     const select = event.target as HTMLSelectElement;
     const selectedValue = select.value;
 

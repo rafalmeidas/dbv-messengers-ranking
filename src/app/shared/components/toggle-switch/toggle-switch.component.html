@@ -1,0 +1,11 @@
+<app-form-group
+  [label]="label"
+  [focused]="focused"
+  [disabled]="disabled"
+  [error]="error"
+>
+  <label class="switch">
+    <input type="checkbox" [(ngModel)]="value" (change)="onToggle($event)" />
+    <span class="slider"></span>
+  </label>
+</app-form-group>
