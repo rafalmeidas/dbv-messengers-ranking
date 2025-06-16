@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
 
-import { ListComponent } from '../../../../shared/components/list/list.component';
 import { QuestionService } from '../../../../shared/services/question/question.service';
+import { ListComponent } from '../../../../shared/components/list/list.component';
 import { Questionnaire } from '../../../../shared/models/question.model';
 
 @Component({

@@ -14,11 +14,11 @@ import { Unit } from '../../../../shared/models/unit.model';
   selector: 'app-trailblazer-form',
   imports: [
     ReactiveFormsModule,
+    ButtonComponent,
     SelectComponent,
     InputComponent,
     CommonModule,
     RouterModule,
-    ButtonComponent,
   ],
   templateUrl: './trailblazer-form.component.html',
   styleUrl: './trailblazer-form.component.scss',

@@ -37,4 +37,12 @@ export const routes: Routes = _.concat(coreRoutes, [
     loadChildren: () =>
       import('./features/register/question/routes').then((m) => m.ROUTES),
   },
+  {
+    path: 'assign-ranking-to-unit',
+    canActivate: [authGuard, adminGuard],
+    loadChildren: () =>
+      import('./features/register/assign-ranking-to-unit/routes').then(
+        (m) => m.ROUTES
+      ),
+  },
 ]);

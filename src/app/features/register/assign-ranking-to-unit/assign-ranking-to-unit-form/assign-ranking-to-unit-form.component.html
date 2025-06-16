@@ -1,0 +1,38 @@
+<h1>
+  {{ isEditMode ? "Editar vinculo de ranking" : "Criar vinculo de ranking" }}
+</h1>
+
+<form [formGroup]="form" (ngSubmit)="submit()">
+  <app-input
+    label="Nome do vinculo"
+    formControlName="name"
+    name="name"
+    placeholder="Nome do vinculo"
+  ></app-input>
+
+  <app-select
+    label="Selecione a unidade"
+    formControlName="unitId"
+    name="unitId"
+    placeholder="Selecione a unidade"
+    [options]="units"
+    labelKey="name"
+    valueKey="id"
+  ></app-select>
+
+  <app-select
+    label="Selecione a o ranking"
+    formControlName="questionnaireId"
+    name="questionnaireId"
+    placeholder="Selecione a o ranking"
+    [options]="questionnaires"
+    labelKey="name"
+    valueKey="id"
+  ></app-select>
+
+  <app-button
+    type="submit"
+    [disabled]="form.invalid"
+    label="Salvar"
+  ></app-button>
+</form>
