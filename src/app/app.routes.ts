@@ -45,4 +45,10 @@ export const routes: Routes = _.concat(coreRoutes, [
         (m) => m.ROUTES
       ),
   },
+  {
+    path: 'ranking',
+    canActivate: [authGuard],
+    loadChildren: () =>
+      import('./features/register/ranking/routes').then((m) => m.ROUTES),
+  },
 ]);

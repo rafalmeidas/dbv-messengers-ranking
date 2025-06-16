@@ -1,7 +1,7 @@
 <div>
   <h1>{{ title }}:</h1>
 
-  <section>
+  <section *ngIf="btnNewUrl">
     <app-button [routerLink]="[btnNewUrl]" [label]="btnNewLabel"></app-button>
   </section>
 
@@ -9,6 +9,7 @@
     <li *ngFor="let item of listArray">
       <span>{{ item[labelKey] }}</span>
       <app-button
+        *ngIf="btnEditUrl"
         variant="icon"
         icon="edit"
         [routerLink]="[btnEditUrl, item[labelId]]"

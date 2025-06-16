@@ -17,7 +17,12 @@ export class MenuComponent {
     {
       label: 'Vincular Ranking',
       path: '/assign-ranking-to-unit',
-      icon: 'rate-review',
+      icon: 'tenancy',
+    },
+    {
+      label: 'Rankings',
+      path: '/ranking',
+      icon: 'star',
     },
   ];
 }

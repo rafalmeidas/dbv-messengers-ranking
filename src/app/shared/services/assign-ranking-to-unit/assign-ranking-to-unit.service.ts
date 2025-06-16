@@ -25,15 +25,12 @@ export class AssignRankingToUnitService {
     return docData(ref) as Observable<AssignRankingToUnit>;
   }
 
-  createAssignRankingToUnit(data: { name: string; unitUid: string }) {
+  createAssignRankingToUnit(data: AssignRankingToUnit) {
     const ref = collection(this.firestore, 'assign-ranking-to-unit');
     return addDoc(ref, data);
   }
 
-  updateAssignRankingToUnit(
-    id: string,
-    data: Partial<{ name: string; unitUid: string }>
-  ) {
+  updateAssignRankingToUnit(id: string, data: Partial<AssignRankingToUnit>) {
     const ref = doc(this.firestore, `assign-ranking-to-unit/${id}`);
     return updateDoc(ref, data);
   }

@@ -1,25 +1,26 @@
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Component, inject } from '@angular/core';
+import { Auth } from '@angular/fire/auth';
 
+import { AssignRankingToUnitService } from '../../../../shared/services/assign-ranking-to-unit/assign-ranking-to-unit.service';
+import { ToggleSwitchComponent } from '../../../../shared/components/toggle-switch/toggle-switch.component';
 import { SelectComponent } from '../../../../shared/components/select/select.component';
 import { ButtonComponent } from '../../../../shared/components/button/button.component';
+import { QuestionService } from '../../../../shared/services/question/question.service';
 import { InputComponent } from '../../../../shared/components/input/input.component';
 import { UnitService } from '../../../../shared/services/unit/unit.service';
-import { Unit } from '../../../../shared/models/unit.model';
-import { AssignRankingToUnitService } from '../../../../shared/services/assign-ranking-to-unit/assign-ranking-to-unit.service';
 import { Questionnaire } from '../../../../shared/models/question.model';
-import { QuestionService } from '../../../../shared/services/question/question.service';
-import { ToggleSwitchComponent } from '../../../../shared/components/toggle-switch/toggle-switch.component';
+import { Unit } from '../../../../shared/models/unit.model';
 
 @Component({
   selector: 'app-assign-ranking-to-unit-form',
   imports: [
+    ToggleSwitchComponent,
     ReactiveFormsModule,
     ButtonComponent,
     SelectComponent,
     InputComponent,
-    ToggleSwitchComponent,
   ],
   templateUrl: './assign-ranking-to-unit-form.component.html',
   styleUrl: './assign-ranking-to-unit-form.component.scss',
@@ -29,6 +30,7 @@ export class AssignRankingToUnitFormComponent {
   private readonly _unitService = inject(UnitService);
   private readonly _route = inject(ActivatedRoute);
   private readonly _router = inject(Router);
+  private readonly _auth = inject(Auth);
   private readonly _assignRankingToUnitService = inject(
     AssignRankingToUnitService
   );
@@ -75,9 +77,10 @@ export class AssignRankingToUnitFormComponent {
         this.form.value as any
       );
     } else {
-      await this._assignRankingToUnitService.createAssignRankingToUnit(
-        this.form.value as any
-      );
+      await this._assignRankingToUnitService.createAssignRankingToUnit({
+        ...(this.form.value as any),
+        uid: this._auth.currentUser?.uid,
+      });
     }
 
     this._router.navigate(['/assign-ranking-to-unit']);

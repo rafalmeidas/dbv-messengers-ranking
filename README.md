@@ -1,59 +1,70 @@
-# DbvMessengersRanking
+# Sistema de Gerenciamento de Unidades e Rankings
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.10.
+Este sistema tem como objetivo gerenciar o ranking de unidade, com o intuito de premiar o melhor desbravador no fim das atividades. Abaixo estão listadas todas as telas do sistema com seus status de desenvolvimento e funcionalidades principais.
 
-## Development server
+---
 
-To start a local development server, run:
+## ✅ Telas Concluídas
 
-```bash
-ng serve
-```
+### Tela de Login
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+- Autenticação de usuários
 
-## Code scaffolding
+### Tela de Registro
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+- Cadastro de novos usuários
 
-```bash
-ng generate component component-name
-```
+### Tela de Cadastro de Unidade (ADMIN)
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+- **Campos:**
+  - Nome
+  - Conselheiros
 
-```bash
-ng generate --help
-```
+### Tela de Cadastro do DBV
 
-## Building
+- **Campos:**
+  - Nome
+  - Unidade (seleção ou associação)
 
-To build the project run:
+### Tela de Cadastro de Perguntas do Ranking da Unidade
 
-```bash
-ng build
-```
+- **Funcionalidades:**
+  - Digitação de pergunta
+  - Adição à lista de perguntas da unidade
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+### Tela de Vincular Questionário à Unidade
 
-## Running unit tests
+- Associação de um conjunto de perguntas a uma unidade específica
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+---
 
-```bash
-ng test
-```
+## ⏳ Telas em Desenvolvimento
 
-## Running end-to-end tests
+### Tela de Lançamento do Ranking
 
-For end-to-end (e2e) testing, run:
+- **Campos:**
+  - Data
+  - Opções de seleção (ex: DBVs, perguntas, respostas)
 
-```bash
-ng e2e
-```
+### Tela de Home
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+- Exibição de dados da unidade e/ou clube
+- **Funcionalidade adicional (a confirmar):**
+  - Exportação de dados da unidade/clube
 
-## Additional Resources
+---
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+## Estrutura Planejada
+
+- **Autenticação:** Login e Registro
+- **Administração:** Cadastro de unidades e conselheiros
+- **Gestão de DBVs:** Cadastro individual e vínculo com unidades
+- **Ranking:** Cadastro de perguntas, vínculo com unidades, e lançamento periódico
+- **Dashboard (Home):** Visualização geral e exportação de dados
+
+---
+
+## Observações
+
+- Telas marcadas com `✅` estão finalizadas e integradas.
+- Telas marcadas com `⏳` estão em desenvolvimento ou planejamento.
