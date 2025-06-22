@@ -40,6 +40,7 @@ Este sistema tem como objetivo gerenciar o ranking de unidade, com o intuito de 
   - Data (FIXA)
   - Opções de seleção (ex: perguntas e resposta)
   - Observações
+  - Ranking válido para o ano
 
 ---
 
