@@ -1,12 +1,30 @@
-<h1>{{ title }}</h1>
+<section class="header">
+  <h1>{{ title }}</h1>
+
+  <span>{{ today | date }}</span>
+</section>
 
 <app-table [data]="questions" [columns]="columns"> </app-table>
 
-<app-text-area htmlId="observacoes" label="Observações"></app-text-area>
+<app-text-area
+  htmlId="observacoes"
+  label="Observações"
+  [(ngModel)]="observations"
+></app-text-area>
 
 <ng-template #actionTemplate let-item>
-  <app-toggle-switch
-    style="width: fit-content; display: block"
-    [htmlId]="item.text + 'id'"
-  ></app-toggle-switch>
+  <div style="display: flex; justify-content: flex-end">
+    <app-toggle-switch
+      style="width: fit-content; display: block"
+      [htmlId]="item.text + 'id'"
+      [(ngModel)]="item.active"
+    ></app-toggle-switch>
+  </div>
 </ng-template>
+
+<app-button
+  [disabled]="loading"
+  type="button"
+  [label]="loading ? 'Salvando...' : 'Salvar Lançamento'"
+  (onClick)="save()"
+></app-button>

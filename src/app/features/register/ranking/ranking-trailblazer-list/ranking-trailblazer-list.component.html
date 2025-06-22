@@ -1,10 +1,12 @@
-<app-list
-  [title]="'Lançar ranking'"
-  [listArray]="trailblazers"
-  [actionListTemplate]="actionListTemplate"
-></app-list>
+<h1>Lançar ranking</h1>
 
-<ng-template #actionListTemplate let-item>
+<app-table [data]="trailblazers" [columns]="columns"> </app-table>
+
+<ng-template #attTemplate let-item>
+  {{ item.lastUpdateRanking | date : "dd/MM/yyyy HH:mm:ss" }}
+</ng-template>
+
+<ng-template #actionTemplate let-item>
   <app-button
     title="Lançar ranking"
     variant="icon"

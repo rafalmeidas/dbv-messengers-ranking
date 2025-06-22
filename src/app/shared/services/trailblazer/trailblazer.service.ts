@@ -1,7 +1,7 @@
 import { orderBy, query, where } from 'firebase/firestore';
 import { Injectable } from '@angular/core';
 import { inject } from '@angular/core';
-import { Observable } from 'rxjs';
+import { from, Observable } from 'rxjs';
 import {
   collectionData,
   collection,
@@ -39,14 +39,14 @@ export class TrailblazerService {
 
   createTrailblazer(data: { name: string; unitUid: string }) {
     const ref = collection(this.firestore, 'trailblazers');
-    return addDoc(ref, data);
+    return from(addDoc(ref, data));
   }
 
   updateTrailblazer(
     id: string,
-    data: Partial<{ name: string; unitUid: string }>
+    data: Partial<{ name: string; unitUid: string; lastUpdateRanking: string }>
   ) {
     const ref = doc(this.firestore, `trailblazers/${id}`);
-    return updateDoc(ref, data);
+    return from(updateDoc(ref, data));
   }
 }

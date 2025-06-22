@@ -1,28 +1,59 @@
 import { ActivatedRoute, Router } from '@angular/router';
-import { Component, inject } from '@angular/core';
+import {
+  Component,
+  inject,
+  OnInit,
+  TemplateRef,
+  ViewChild,
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { TrailblazerService } from '../../../../shared/services/trailblazer/trailblazer.service';
 import { ButtonComponent } from '../../../../shared/components/button/button.component';
-import { ListComponent } from '../../../../shared/components/list/list.component';
+import { TableComponent } from '../../../../shared/components/table/table.component';
 import { Trailblazer } from '../../../../shared/models/trailblazer.model';
+import { TableColunm } from '../../../../shared/components/table/types';
+import { handleRouter } from '../routes';
 
 @Component({
   selector: 'app-ranking-trailblazer-list',
-  imports: [CommonModule, ListComponent, ButtonComponent],
+  imports: [CommonModule, ButtonComponent, TableComponent],
   templateUrl: './ranking-trailblazer-list.component.html',
   styleUrl: './ranking-trailblazer-list.component.scss',
 })
-export class RankingTrailblazerListComponent {
+export class RankingTrailblazerListComponent implements OnInit {
   private readonly _trailblazerService = inject(TrailblazerService);
   private readonly _route = inject(ActivatedRoute);
   private readonly _router = inject(Router);
+
+  @ViewChild('actionTemplate', { static: true })
+  actionTemplate!: TemplateRef<any>;
+  @ViewChild('attTemplate', { static: true })
+  attTemplate!: TemplateRef<any>;
 
   trailblazers: Trailblazer[] = [];
   rankingUid: string | null = null;
   unitUid: string | null = null;
 
-  constructor() {
+  columns: TableColunm<Trailblazer>[] = [];
+
+  ngOnInit(): void {
+    this.columns = [
+      { label: 'Desbavador', key: 'name', align: 'start' },
+      {
+        label: 'Últ. atualização',
+        key: 'lastUpdateRanking',
+        align: 'center',
+        template: this.attTemplate,
+      },
+      {
+        label: 'Ações',
+        key: 'name',
+        align: 'end',
+        template: this.actionTemplate,
+      },
+    ];
+
     this._route.paramMap.subscribe((params) => {
       this.rankingUid = params.get('id');
       this.unitUid = params.get('unitUid');
@@ -38,8 +69,10 @@ export class RankingTrailblazerListComponent {
   }
 
   onAction(trailblazer: Trailblazer) {
-    this._router.navigate([
-      `/ranking/${this.rankingUid}/unit/${this.unitUid}/create/trailblazer/${trailblazer.id}`,
-    ]);
+    handleRouter('assignTrailblazer', this._router, {
+      rankingId: this.rankingUid,
+      unitUid: this.unitUid,
+      trailblazerId: trailblazer.id,
+    });
   }
 }

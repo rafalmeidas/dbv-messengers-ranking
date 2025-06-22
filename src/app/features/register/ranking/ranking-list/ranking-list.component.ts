@@ -6,6 +6,7 @@ import { AssignRankingToUnitService } from '../../../../shared/services/assign-r
 import { AssignRankingToUnit } from '../../../../shared/models/assign-ranking-to-unit.model';
 import { ButtonComponent } from '../../../../shared/components/button/button.component';
 import { ListComponent } from '../../../../shared/components/list/list.component';
+import { handleRouter } from '../routes';
 
 @Component({
   selector: 'app-ranking-list',
@@ -28,8 +29,9 @@ export class RankingListComponent {
   }
 
   onAction(ranking: AssignRankingToUnit) {
-    this._router.navigate([
-      `/ranking/${ranking.id}/unit/${ranking.unitUid}/create`,
-    ]);
+    handleRouter('create', this._router, {
+      rankingId: ranking.id,
+      unitUid: ranking.unitUid,
+    });
   }
 }

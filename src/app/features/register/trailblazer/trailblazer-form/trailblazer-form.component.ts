@@ -56,16 +56,17 @@ export class TrailblazerFormComponent {
     });
   }
 
-  async submit() {
+  submit(): void {
     if (this.form.invalid) return;
 
     if (this.isEditMode && this.trailblazerUid) {
-      await this._trailblazerService.updateTrailblazer(
-        this.trailblazerUid,
-        this.form.value as any
-      );
+      this._trailblazerService
+        .updateTrailblazer(this.trailblazerUid, this.form.value as any)
+        .subscribe();
     } else {
-      await this._trailblazerService.createTrailblazer(this.form.value as any);
+      this._trailblazerService
+        .createTrailblazer(this.form.value as any)
+        .subscribe();
     }
 
     this._router.navigate(['/trailblazer']);
