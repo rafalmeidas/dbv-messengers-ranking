@@ -39,6 +39,17 @@
     htmlId="active"
   ></app-toggle-switch>
 
+  <app-select
+    label="Ranking válido para o ano de"
+    formControlName="year"
+    name="year"
+    placeholder="Selecione o ano"
+    [options]="years"
+    labelKey="name"
+    valueKey="value"
+    htmlId="year"
+  ></app-select>
+
   <app-button
     type="submit"
     [disabled]="form.invalid"

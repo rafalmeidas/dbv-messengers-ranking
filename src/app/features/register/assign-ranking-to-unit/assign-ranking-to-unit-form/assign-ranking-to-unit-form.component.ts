@@ -40,6 +40,7 @@ export class AssignRankingToUnitFormComponent {
     name: ['', Validators.required],
     unitUid: ['', Validators.required],
     questionnaireId: ['', Validators.required],
+    year: [new Date().getFullYear(), Validators.required],
     active: [false],
   });
 
@@ -47,8 +48,13 @@ export class AssignRankingToUnitFormComponent {
   assignRankingTounitUid: string | null = null;
   units: Unit[] = [];
   questionnaires: Questionnaire[] = [];
+  years: { name: number; value: number }[] = [];
 
   constructor() {
+    this._generateYears();
+    if (this.years.length === 1) {
+    }
+
     this._unitService.getAllUnits().subscribe((units) => (this.units = units));
     this._questionService
       .getAllQuestionnaires()
@@ -84,5 +90,16 @@ export class AssignRankingToUnitFormComponent {
     }
 
     this._router.navigate(['/assign-ranking-to-unit']);
+  }
+
+  private _generateYears(): void {
+    const startYear = 2025;
+    const currentYear = new Date().getFullYear();
+    const endYear = currentYear + 2;
+
+    this.years = Array.from({ length: endYear - startYear + 1 }, (_, i) => {
+      const year = startYear + i;
+      return { name: year, value: year };
+    });
   }
 }

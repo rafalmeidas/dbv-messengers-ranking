@@ -36,15 +36,16 @@ Este sistema tem como objetivo gerenciar o ranking de unidade, com o intuito de 
 
 - Associação de um conjunto de perguntas a uma unidade específica
 
+- **Campos:**
+  - Data (FIXA)
+  - Opções de seleção (ex: perguntas e resposta)
+  - Observações
+
 ---
 
 ## ⏳ Telas em Desenvolvimento
 
 ### Tela de Lançamento do Ranking
-
-- **Campos:**
-  - Data (FIXA)
-  - Opções de seleção (ex: perguntas e resposta)
 
 ### Tela de Vincular Questionário à Unidade
 

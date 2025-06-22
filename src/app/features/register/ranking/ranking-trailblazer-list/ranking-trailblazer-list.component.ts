@@ -1,12 +1,12 @@
 import { ActivatedRoute, Router } from '@angular/router';
+import { CommonModule } from '@angular/common';
 import {
+  TemplateRef,
+  ViewChild,
   Component,
   inject,
   OnInit,
-  TemplateRef,
-  ViewChild,
 } from '@angular/core';
-import { CommonModule } from '@angular/common';
 
 import { TrailblazerService } from '../../../../shared/services/trailblazer/trailblazer.service';
 import { ButtonComponent } from '../../../../shared/components/button/button.component';
