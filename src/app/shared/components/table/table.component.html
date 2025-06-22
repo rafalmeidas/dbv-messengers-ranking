@@ -1,0 +1,30 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th
+        *ngFor="let col of columns"
+        [style.text-align]="col.align ?? 'center'"
+      >
+        {{ col.label }}
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let row of data; let i = index">
+      <td
+        *ngFor="let col of columns"
+        [style.text-align]="col.align ?? 'center'"
+      >
+        <ng-container
+          *ngIf="col.template; else defaultCell"
+          [ngTemplateOutlet]="col.template"
+          [ngTemplateOutletContext]="{ $implicit: row, index: i }"
+        ></ng-container>
+
+        <ng-template #defaultCell>
+          {{ row[col.key] }}
+        </ng-template>
+      </td>
+    </tr>
+  </tbody>
+</table>

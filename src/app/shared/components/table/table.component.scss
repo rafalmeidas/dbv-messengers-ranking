@@ -1,0 +1,24 @@
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 16px;
+  border: 1px solid var(--color-outline-variant);
+  border-radius: 8px;
+  overflow: hidden;
+
+  thead {
+    background-color: var(--color-surface-variant);
+    color: var(--color-text-low);
+  }
+
+  th,
+  td {
+    padding: 12px 16px;
+    color: var(--color-text-low);
+    border-bottom: 1px solid var(--color-outline-variant);
+  }
+
+  tr:last-child td {
+    border-bottom: none;
+  }
+}
