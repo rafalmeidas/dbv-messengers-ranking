@@ -1,0 +1,10 @@
+<div>
+  <h1>{{ title }}:</h1>
+
+  <ng-container *ngFor="let question of questions">
+    <app-toggle-switch
+      [label]="question.text"
+      [id]="question.text + 'id'"
+    ></app-toggle-switch>
+  </ng-container>
+</div>

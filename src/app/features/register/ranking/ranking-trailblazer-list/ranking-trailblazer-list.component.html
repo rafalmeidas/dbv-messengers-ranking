@@ -1,0 +1,14 @@
+<app-list
+  [title]="'Lançar ranking'"
+  [listArray]="trailblazers"
+  [actionListTemplate]="actionListTemplate"
+></app-list>
+
+<ng-template #actionListTemplate let-item>
+  <app-button
+    title="Lançar ranking"
+    variant="icon"
+    icon="edit-arrow-up"
+    (onClick)="onAction(item)"
+  ></app-button>
+</ng-template>
