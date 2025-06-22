@@ -1,5 +1,5 @@
-import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
+import { CommonModule } from '@angular/common';
 
 import { ListComponent } from '../../../../shared/components/list/list.component';
 import { UnitService } from '../../../../shared/services/unit/unit.service';

@@ -38,13 +38,13 @@ export class AssignRankingToUnitFormComponent {
 
   form = this._fb.group({
     name: ['', Validators.required],
-    unitId: ['', Validators.required],
+    unitUid: ['', Validators.required],
     questionnaireId: ['', Validators.required],
     active: [false],
   });
 
   isEditMode = false;
-  assignRankingToUnitId: string | null = null;
+  assignRankingTounitUid: string | null = null;
   units: Unit[] = [];
   questionnaires: Questionnaire[] = [];
 
@@ -55,12 +55,12 @@ export class AssignRankingToUnitFormComponent {
       .subscribe((questionnaires) => (this.questionnaires = questionnaires));
 
     this._route.paramMap.subscribe((params) => {
-      this.assignRankingToUnitId = params.get('id');
-      this.isEditMode = !!this.assignRankingToUnitId;
+      this.assignRankingTounitUid = params.get('id');
+      this.isEditMode = !!this.assignRankingTounitUid;
 
-      if (this.assignRankingToUnitId) {
+      if (this.assignRankingTounitUid) {
         this._assignRankingToUnitService
-          .getAssignRankingToUnitById(this.assignRankingToUnitId)
+          .getAssignRankingToUnitById(this.assignRankingTounitUid)
           .subscribe((assignRankingToUnit) => {
             if (assignRankingToUnit) this.form.patchValue(assignRankingToUnit);
           });
@@ -71,9 +71,9 @@ export class AssignRankingToUnitFormComponent {
   async submit() {
     if (this.form.invalid) return;
 
-    if (this.isEditMode && this.assignRankingToUnitId) {
+    if (this.isEditMode && this.assignRankingTounitUid) {
       await this._assignRankingToUnitService.updateAssignRankingToUnit(
-        this.assignRankingToUnitId,
+        this.assignRankingTounitUid,
         this.form.value as any
       );
     } else {

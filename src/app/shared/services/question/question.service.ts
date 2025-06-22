@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { inject } from '@angular/core';
-import { Observable } from 'rxjs';
+import { from, Observable } from 'rxjs';
 import {
   collectionData,
   collection,
@@ -10,6 +10,7 @@ import {
   addDoc,
   doc,
 } from '@angular/fire/firestore';
+
 import { Question, Questionnaire } from '../../models/question.model';
 
 @Injectable({
@@ -30,37 +31,20 @@ export class QuestionService {
     return docData(ref) as Observable<Questionnaire>;
   }
 
-  createQuestionnaire(data: { name: string; questions?: Question[] }) {
+  createQuestionnaire(data: {
+    name: string;
+    questions?: Question[];
+  }): Observable<any> {
     const ref = collection(this.firestore, 'questionnaires');
     const payload = { ...data, questions: data.questions || [] };
-    return addDoc(ref, payload);
+    return from(addDoc(ref, payload));
   }
 
   updateQuestionnaire(
     id: string,
     data: Partial<{ name: string; questions: Question[] }>
-  ) {
+  ): Observable<any> {
     const ref = doc(this.firestore, `questionnaires/${id}`);
-    return updateDoc(ref, data);
-  }
-
-  async addQuestion(id: string, question: Question) {
-    const ref = doc(this.firestore, `questionnaires/${id}`);
-    const questionnaireSnap = await docData(ref).toPromise();
-    const currentQuestions =
-      (questionnaireSnap as Questionnaire).questions || [];
-    const updatedQuestions = [...currentQuestions, question];
-    return updateDoc(ref, { questions: updatedQuestions });
-  }
-
-  async removeQuestion(id: string, questionIndex: number) {
-    const ref = doc(this.firestore, `questionnaires/${id}`);
-    const questionnaireSnap = await docData(ref).toPromise();
-    const currentQuestions =
-      (questionnaireSnap as Questionnaire).questions || [];
-    const updatedQuestions = currentQuestions.filter(
-      (_, index) => index !== questionIndex
-    );
-    return updateDoc(ref, { questions: updatedQuestions });
+    return from(updateDoc(ref, data));
   }
 }

@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, TemplateRef } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
@@ -18,4 +18,6 @@ export class ListComponent<T extends Record<string, any>> {
   @Input() labelKey: keyof T = 'name' as keyof T;
   @Input() labelId: keyof T = 'id' as keyof T;
   @Input() btnEditUrl: string = '';
+  @Input() actionHeaderTemplate?: TemplateRef<any>;
+  @Input() actionListTemplate?: TemplateRef<any>;
 }

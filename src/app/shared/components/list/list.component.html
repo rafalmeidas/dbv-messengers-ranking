@@ -1,19 +1,37 @@
 <div>
   <h1>{{ title }}:</h1>
 
-  <section *ngIf="btnNewUrl">
-    <app-button [routerLink]="[btnNewUrl]" [label]="btnNewLabel"></app-button>
+  <section>
+    <ng-container
+      *ngTemplateOutlet="actionHeaderTemplate ?? default"
+    ></ng-container>
   </section>
+
+  <ng-template #default>
+    <ng-container *ngIf="btnNewUrl">
+      <app-button [routerLink]="[btnNewUrl]" [label]="btnNewLabel"></app-button>
+    </ng-container>
+  </ng-template>
 
   <ul>
     <li *ngFor="let item of listArray">
       <span>{{ item[labelKey] }}</span>
-      <app-button
-        *ngIf="btnEditUrl"
-        variant="icon"
-        icon="edit"
-        [routerLink]="[btnEditUrl, item[labelId]]"
-      ></app-button>
+
+      <ng-container
+        *ngTemplateOutlet="
+          actionListTemplate ?? defaultAction;
+          context: { $implicit: item }
+        "
+      ></ng-container>
+
+      <ng-template #defaultAction>
+        <app-button
+          *ngIf="btnEditUrl"
+          variant="icon"
+          icon="edit"
+          [routerLink]="[btnEditUrl, item[labelId]]"
+        ></app-button>
+      </ng-template>
     </li>
   </ul>
 </div>

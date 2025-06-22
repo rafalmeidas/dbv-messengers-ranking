@@ -32,23 +32,23 @@ export class TrailblazerFormComponent {
 
   form = this._fb.group({
     name: ['', Validators.required],
-    unitId: ['', Validators.required],
+    unitUid: ['', Validators.required],
   });
 
   isEditMode = false;
-  trailblazerId: string | null = null;
+  trailblazerUid: string | null = null;
   units: Unit[] = [];
 
   constructor() {
     this._unitService.getAllUnits().subscribe((units) => (this.units = units));
 
     this._route.paramMap.subscribe((params) => {
-      this.trailblazerId = params.get('id');
-      this.isEditMode = !!this.trailblazerId;
+      this.trailblazerUid = params.get('id');
+      this.isEditMode = !!this.trailblazerUid;
 
-      if (this.trailblazerId) {
+      if (this.trailblazerUid) {
         this._trailblazerService
-          .getTrailblazerById(this.trailblazerId)
+          .getTrailblazerById(this.trailblazerUid)
           .subscribe((unit) => {
             if (unit) this.form.patchValue(unit);
           });
@@ -59,9 +59,9 @@ export class TrailblazerFormComponent {
   async submit() {
     if (this.form.invalid) return;
 
-    if (this.isEditMode && this.trailblazerId) {
+    if (this.isEditMode && this.trailblazerUid) {
       await this._trailblazerService.updateTrailblazer(
-        this.trailblazerId,
+        this.trailblazerUid,
         this.form.value as any
       );
     } else {

@@ -1,3 +1,4 @@
+import { orderBy, query, where } from 'firebase/firestore';
 import { Injectable } from '@angular/core';
 import { inject } from '@angular/core';
 import { Observable } from 'rxjs';
@@ -21,7 +22,14 @@ export class TrailblazerService {
 
   getAllTrailblazers(): Observable<Trailblazer[]> {
     const ref = collection(this.firestore, 'trailblazers');
-    return collectionData(ref, { idField: 'id' }) as Observable<Trailblazer[]>;
+    const q = query(ref, orderBy('name'));
+    return collectionData(q, { idField: 'id' }) as Observable<Trailblazer[]>;
+  }
+
+  getTrailblazersByUnit(unitUid: string): Observable<Trailblazer[]> {
+    const ref = collection(this.firestore, 'trailblazers');
+    const q = query(ref, where('unitUid', '==', unitUid), orderBy('name'));
+    return collectionData(q, { idField: 'id' }) as Observable<Trailblazer[]>;
   }
 
   getTrailblazerById(id: string): Observable<Trailblazer> {

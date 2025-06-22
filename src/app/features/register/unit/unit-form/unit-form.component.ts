@@ -25,7 +25,7 @@ export class UnitFormComponent {
   });
 
   isEditMode = false;
-  unitId: string | null = null;
+  unitUid: string | null = null;
   counselors: any[] = [];
 
   constructor() {
@@ -34,11 +34,11 @@ export class UnitFormComponent {
     });
 
     this.route.paramMap.subscribe((params) => {
-      this.unitId = params.get('id');
-      this.isEditMode = !!this.unitId;
+      this.unitUid = params.get('id');
+      this.isEditMode = !!this.unitUid;
 
-      if (this.unitId) {
-        this.unitService.getUnitById(this.unitId).subscribe((unit) => {
+      if (this.unitUid) {
+        this.unitService.getUnitById(this.unitUid).subscribe((unit) => {
           if (unit) this.form.patchValue(unit);
         });
       }
@@ -48,8 +48,8 @@ export class UnitFormComponent {
   async submit() {
     if (this.form.invalid) return;
 
-    if (this.isEditMode && this.unitId) {
-      await this.unitService.updateUnit(this.unitId, this.form.value as any);
+    if (this.isEditMode && this.unitUid) {
+      await this.unitService.updateUnit(this.unitUid, this.form.value as any);
     } else {
       await this.unitService.createUnit(this.form.value as any);
     }

@@ -46,6 +46,10 @@ Este sistema tem como objetivo gerenciar o ranking de unidade, com o intuito de 
   - Data
   - Opções de seleção (ex: DBVs, perguntas, respostas)
 
+### Tela de Vincular Questionário à Unidade
+
+- Adicionar campo para ranking especial e adicionar pontos a remover
+
 ### Tela de Home
 
 - Exibição de dados da unidade e/ou clube

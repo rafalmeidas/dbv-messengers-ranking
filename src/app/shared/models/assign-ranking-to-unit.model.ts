@@ -2,7 +2,7 @@ export interface AssignRankingToUnit {
   id?: string;
   name: string;
   questionnaireId: string;
-  unitId: string;
+  unitUid: string;
   active: true;
   uid: string;
 }

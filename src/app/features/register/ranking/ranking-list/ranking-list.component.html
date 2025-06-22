@@ -1,1 +1,14 @@
-<app-list title="Rankings Ativos" [listArray]="rankings"></app-list>
+<app-list
+  [title]="'Rankings Ativos'"
+  [listArray]="rankings"
+  [actionListTemplate]="actionListTemplate"
+></app-list>
+
+<ng-template #actionListTemplate let-item>
+  <app-button
+    title="Lançar ranking"
+    variant="icon"
+    icon="star"
+    (onClick)="onAction(item)"
+  ></app-button>
+</ng-template>
