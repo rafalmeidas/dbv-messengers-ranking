@@ -33,6 +33,7 @@ export abstract class ControlValueAccessorAbstractComponent<T>
 {
   @Input() label?: string;
   @Input() name?: string;
+  @Input({ alias: 'htmlId', required: true }) id?: string;
   @Input() placeholder?: string;
   @Input() disabled: boolean = false;
   @Input() required: boolean = false;

@@ -5,16 +5,16 @@
   [error]="error"
   [htmlId]="id"
 >
-  <input
-    [type]="type"
-    [(ngModel)]="value"
-    [disabled]="disabled"
-    [attr.placeholder]="placeholder"
+  <textarea
+    [ngModel]="value"
+    (ngModelChange)="onInput($event)"
     [attr.name]="name"
+    [attr.placeholder]="placeholder"
+    [rows]="rows"
+    [cols]="cols"
+    [disabled]="disabled"
     [class.error]="!!error"
-    [min]="min"
-    (input)="onInput($event)"
     (focus)="onFocus()"
     (blur)="onBlur()"
-  />
+  ></textarea>
 </app-form-group>

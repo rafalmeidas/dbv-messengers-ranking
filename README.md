@@ -43,8 +43,8 @@ Este sistema tem como objetivo gerenciar o ranking de unidade, com o intuito de 
 ### Tela de Lançamento do Ranking
 
 - **Campos:**
-  - Data
-  - Opções de seleção (ex: DBVs, perguntas, respostas)
+  - Data (FIXA)
+  - Opções de seleção (ex: perguntas e resposta)
 
 ### Tela de Vincular Questionário à Unidade
 

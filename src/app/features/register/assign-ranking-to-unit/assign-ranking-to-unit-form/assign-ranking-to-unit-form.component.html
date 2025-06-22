@@ -8,6 +8,7 @@
     formControlName="name"
     name="name"
     placeholder="Nome do vinculo"
+    htmlId="name"
   ></app-input>
 
   <app-select
@@ -18,6 +19,7 @@
     [options]="units"
     labelKey="name"
     valueKey="id"
+    htmlId="unit"
   ></app-select>
 
   <app-select
@@ -28,11 +30,13 @@
     [options]="questionnaires"
     labelKey="name"
     valueKey="id"
+    htmlId="questionnaire"
   ></app-select>
 
   <app-toggle-switch
     label="Ativo?"
     formControlName="active"
+    htmlId="active"
   ></app-toggle-switch>
 
   <app-button

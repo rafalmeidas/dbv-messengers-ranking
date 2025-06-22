@@ -1,13 +1,16 @@
 <h1>{{ isEditMode ? "Editar unidade" : "Criar unidade" }}</h1>
 
 <form [formGroup]="form" (ngSubmit)="submit()">
-  <label>
-    Name:
-    <input formControlName="name" />
-  </label>
+  <app-input
+    label="Pergunta"
+    formControlName="name"
+    name="name"
+    placeholder="Nome da unidade"
+    htmlId="question"
+  ></app-input>
 
   <label>
-    Counselors:
+    Conselheiros:
     <select formControlName="counselors" multiple>
       <option *ngFor="let user of counselors" [value]="user.uid">
         {{ user.name }}

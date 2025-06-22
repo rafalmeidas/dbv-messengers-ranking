@@ -1,10 +1,12 @@
-<div>
-  <h1>{{ title }}:</h1>
+<h1>{{ title }}</h1>
 
-  <ng-container *ngFor="let question of questions">
-    <app-toggle-switch
-      [label]="question.text"
-      [id]="question.text + 'id'"
-    ></app-toggle-switch>
-  </ng-container>
-</div>
+<app-table [data]="questions" [columns]="columns"> </app-table>
+
+<app-text-area htmlId="observacoes" label="Observações"></app-text-area>
+
+<ng-template #actionTemplate let-item>
+  <app-toggle-switch
+    style="width: fit-content; display: block"
+    [htmlId]="item.text + 'id'"
+  ></app-toggle-switch>
+</ng-template>

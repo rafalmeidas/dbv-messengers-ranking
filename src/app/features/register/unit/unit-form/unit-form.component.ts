@@ -3,12 +3,13 @@ import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
+import { InputComponent } from '../../../../shared/components/input/input.component';
 import { UnitService } from '../../../../shared/services/unit/unit.service';
 import { UserService } from '../../../../core/services/user/user.service';
 
 @Component({
   selector: 'app-unit-form',
-  imports: [CommonModule, ReactiveFormsModule, RouterModule],
+  imports: [CommonModule, ReactiveFormsModule, RouterModule, InputComponent],
   templateUrl: './unit-form.component.html',
   styleUrl: './unit-form.component.scss',
 })

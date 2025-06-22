@@ -4,7 +4,7 @@
   [class.disabled]="disabled"
   [class.error]="!!error"
 >
-  <label *ngIf="label">{{ label }}</label>
+  <label [for]="id" *ngIf="label">{{ label }}</label>
   <ng-content></ng-content>
   <div *ngIf="error" class="error-text">{{ error }}</div>
 </div>

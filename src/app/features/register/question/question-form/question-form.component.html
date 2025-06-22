@@ -6,6 +6,7 @@
     formControlName="name"
     name="name"
     placeholder="Digite o nome"
+    htmlId="name"
   ></app-input>
 
   <div class="container">
@@ -14,6 +15,7 @@
       [formControl]="newQuestionControl"
       name="name"
       placeholder="Digite a Pergunta"
+      htmlId="question"
     ></app-input>
 
     <app-input
@@ -23,6 +25,7 @@
       placeholder="Digite os pontos"
       type="number"
       min="0"
+      htmlId="point"
     ></app-input>
 
     <app-button

@@ -1,0 +1,39 @@
+:host {
+  textarea {
+    width: 100%;
+    padding: 0.5rem 0.75rem;
+    border: 1px solid var(--color-outline-variant);
+    border-radius: 8px;
+    background-color: var(--theme-surface);
+    color: var(--color-text-high);
+    font-size: 1rem;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    resize: vertical;
+
+    &:hover {
+      border-color: var(--color-outline);
+    }
+
+    &:focus {
+      border-color: var(--color-primary);
+      box-shadow: 0 0 0 2px
+        color-mix(in srgb, var(--color-primary), transparent 80%);
+      outline: none;
+    }
+
+    &:active {
+      border-color: var(--color-pressed);
+    }
+
+    &:disabled {
+      background-color: var(--theme-surface);
+      color: var(--color-text-lowest);
+      border-color: var(--color-outline-variant);
+      cursor: not-allowed;
+    }
+
+    &.error {
+      border-color: var(--color-error);
+    }
+  }
+}
