@@ -4,6 +4,7 @@
       <th
         *ngFor="let col of columns"
         [style.text-align]="col.align ?? 'center'"
+        [ngStyle]="col.style"
       >
         {{ col.label }}
       </th>
@@ -14,6 +15,7 @@
       <td
         *ngFor="let col of columns"
         [style.text-align]="col.align ?? 'center'"
+        [ngStyle]="col.style"
       >
         <ng-container
           *ngIf="col.template; else defaultCell"

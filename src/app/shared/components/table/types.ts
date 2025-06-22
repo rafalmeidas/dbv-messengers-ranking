@@ -5,4 +5,5 @@ export interface TableColunm<T> {
   key: keyof T;
   align?: 'center' | 'start' | 'end';
   template?: TemplateRef<any>;
+  style?: Partial<CSSStyleDeclaration>;
 }
